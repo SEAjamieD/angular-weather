@@ -1,6 +1,6 @@
 <div id="app">
   <div id="pusher" [class.isOpen]="menuOpen">
-    <nav></nav>
+    <nav [class.isOpen]="menuOpen"></nav>
     <div id="content">
       <div id="navbar">
         <div class="menu-button" (click)="handleOpen()">
