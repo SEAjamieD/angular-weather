@@ -1,0 +1,52 @@
+#app {
+  position: relative;
+  overflow: hidden;
+  height: 100vh;
+  background: powderblue;
+}
+
+#pusher {
+  position: relative;
+  left: 0;
+  height: 100%;
+  z-index: 99;
+  transition: transform 0.5s;
+  &.isOpen {
+    transform: translate3d(-300px, 0, 0);
+  }
+}
+
+nav {
+  position: absolute;
+  top: 0;
+  right: 0;
+  height: 100%;
+  width: 300px;
+  transform: translate3d(100%, 0, 0);
+  background: red;
+  z-index: 100;
+}
+
+#navbar {
+  border: 2px solid black;
+  width: 100%;
+
+  .menu-button {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-left: auto;
+    width: 50px;
+    height: 50px;
+    .dot {
+      width: 5px;
+      height: 5px;
+      background: black;
+      border-radius: 50%;
+      & + .dot {
+        margin-top: 5px;
+      }
+    }
+  }
+}
