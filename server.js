@@ -9,7 +9,7 @@ const distDir = __dirname + "/dist/";
 app.use(express.static(distDir));
 
 // Initialize the app
-const server = app.listen(process.env.PORT || 8080, function() {
+const server = app.listen(process.env.PORT || 3000, function() {
   const port = server.address().port;
   console.log(`App running on port ${port}`);
 });
