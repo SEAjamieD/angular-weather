@@ -5,7 +5,7 @@ const app = express();
 app.use(bodyParser.json());
 
 // Initialize the app
-const server = app.listen(process.env.PORT || 8080, () => {
+const server = app.listen(process.env.PORT || 8080, function() {
   const port = server.address().port;
   console.log(`App running on port ${port}`);
 });
@@ -13,11 +13,11 @@ const server = app.listen(process.env.PORT || 8080, () => {
 // API ROUTES BELOW
 
 // Generic error handler
-const handleError = (res, reason, message, code) => {
+function handleError(res, reason, message, code) {
   console.log(`ERROR: ${reason}`);
   res.status(code || 500).json({ error: message });
-};
+}
 
 app.get("/api/test", function(req, res) {
-  console.log("api hit");
+  res.status(200).json("api hit");
 });
