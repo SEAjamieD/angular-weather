@@ -1,6 +1,6 @@
 <div id="app">
   <div id="pusher" [class.isOpen]="menuOpen">
-    <nav [class.isOpen]="menuOpen"></nav>
+    <app-nav-menu [isOpen]="menuOpen"></app-nav-menu>
     <div id="content">
       <app-navbar (isOpen)="handleMenuOpen($event)"></app-navbar>
       <app-main-weather></app-main-weather>
