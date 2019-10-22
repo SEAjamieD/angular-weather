@@ -7,9 +7,9 @@ import { Component } from "@angular/core";
 })
 export class AppComponent {
   title = "heroku-weather";
-  menuOpen = false;
+  menuOpen: boolean = false;
 
-  handleOpen(): void {
+  handleMenuOpen(event): void {
     this.menuOpen = !this.menuOpen;
   }
 }
