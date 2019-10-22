@@ -8,9 +8,10 @@ import { TestComponent } from "./test/test.component";
 import { ServiceWorkerModule } from '@angular/service-worker';
 import { environment } from '../environments/environment';
 import { NavbarComponent } from './components/navbar/navbar.component';
+import { MainWeatherComponent } from './components/main-weather/main-weather.component';
 
 @NgModule({
-  declarations: [AppComponent, TestComponent, NavbarComponent],
+  declarations: [AppComponent, TestComponent, NavbarComponent, MainWeatherComponent],
   imports: [BrowserModule, AppRoutingModule, HttpModule, ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production })],
   providers: [],
   bootstrap: [AppComponent]

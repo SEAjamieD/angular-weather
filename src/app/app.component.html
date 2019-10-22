@@ -3,10 +3,7 @@
     <nav [class.isOpen]="menuOpen"></nav>
     <div id="content">
       <app-navbar (isOpen)="handleMenuOpen($event)"></app-navbar>
-      <div id="main-weather">
-        <div class="temperature"></div>
-        <div class="forecast-container"></div>
-      </div>
+      <app-main-weather></app-main-weather>
     </div>
   </div>
 </div>
