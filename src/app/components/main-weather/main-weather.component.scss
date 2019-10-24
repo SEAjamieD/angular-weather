@@ -9,13 +9,24 @@
 
   display: flex;
   flex-direction: column;
+}
 
-  .temperature {
-    flex-grow: 2.7;
-  }
+.temperature {
+  // flex-grow: 2.7;
+  height: 65%;
 
-  .forecast-container {
-    flex-grow: 1.3;
-    background: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  span {
+    font-size: 170px;
+    color: #bdf1fc;
   }
+}
+
+.forecast-container {
+  flex-grow: 1;
+  background: white;
 }

@@ -1,4 +1,4 @@
-import { Component, OnInit } from "@angular/core";
+import { Component, OnInit, Input } from "@angular/core";
 import { Temperatures } from "../../types/temperatures";
 
 @Component({
@@ -7,6 +7,7 @@ import { Temperatures } from "../../types/temperatures";
   styleUrls: ["./main-weather.component.scss"]
 })
 export class MainWeatherComponent implements OnInit {
+  @Input() temperature: number;
   constructor() {}
 
   ngOnInit() {}

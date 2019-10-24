@@ -6,7 +6,9 @@
         (isOpen)="handleMenuOpen($event)"
         [currentCity]="currentCity"
       ></app-navbar>
-      <app-main-weather></app-main-weather>
+      <app-main-weather
+        [temperature]="currentCity.temperatureF"
+      ></app-main-weather>
     </div>
   </div>
 </div>
