@@ -4,6 +4,7 @@
     <div id="content">
       <app-navbar
         (isOpen)="handleMenuOpen($event)"
+        (newCity)="updateCity($event)"
         [currentCity]="currentCity"
       ></app-navbar>
       <app-main-weather

@@ -16,7 +16,7 @@ export class AppComponent {
   constructor(private weatherService: WeatherService) {}
 
   ngOnInit() {
-    this.getWeatherByCity();
+    this.getWeatherByCity("Seattle");
   }
 
   handleMenuOpen(event): void {
@@ -28,9 +28,13 @@ export class AppComponent {
   }
 
   //city input needed below
-  getWeatherByCity(): void {
-    const returnedCity = this.weatherService.getWeatherByCity("Seattle");
+  getWeatherByCity(city: string): void {
+    const returnedCity = this.weatherService.getWeatherByCity(city);
     this.currentCity = returnedCity[0];
     console.log(this.currentCity);
+  }
+
+  updateCity(event: string): void {
+    this.getWeatherByCity(event);
   }
 }

@@ -6,12 +6,18 @@
     </span>
     <span class="country">{{ currentCity.country }}</span>
   </div>
-  <div id="search" class="nav-item">
+  <div id="search" class="nav-item" (click)="toggleSearchOpen()">
     <span>&#9906;</span>
   </div>
   <div class="menu-button nav-item" (click)="handleOpen()">
     <div class="dot"></div>
     <div class="dot"></div>
     <div class="dot"></div>
+  </div>
+  <div *ngIf="searchOpen" id="searchContainer">
+    <label for="search">
+      <input name="search" type="text" placeholder="Seattle, Copenhagen..." />
+      <button (click)="handleSearch('Copenhagen')" type="submit">Go</button>
+    </label>
   </div>
 </div>
