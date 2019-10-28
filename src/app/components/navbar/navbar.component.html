@@ -16,8 +16,15 @@
   </div>
   <div *ngIf="searchOpen" id="searchContainer">
     <label for="search">
-      <input name="search" type="text" placeholder="Seattle, Copenhagen..." />
-      <button (click)="handleSearch('Copenhagen')" type="submit">Go</button>
+      <input
+        name="search"
+        #searchInput
+        type="text"
+        placeholder="Seattle, Copenhagen..."
+      />
+      <button (click)="handleSearch(searchInput.value)" type="submit">
+        Go
+      </button>
     </label>
   </div>
 </div>
