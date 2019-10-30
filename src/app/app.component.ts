@@ -1,6 +1,7 @@
 import { Component } from "@angular/core";
 import { WeatherService } from "./services/weather.service";
 import { Temperatures } from "./types/temperatures";
+import { Observable } from "rxjs";
 
 @Component({
   selector: "app-root",
@@ -10,13 +11,14 @@ import { Temperatures } from "./types/temperatures";
 export class AppComponent {
   title = "heroku-weather";
   menuOpen: boolean = false;
-  weather: Temperatures[];
+  weather;
   currentCity: Temperatures;
 
   constructor(private weatherService: WeatherService) {}
 
   ngOnInit() {
     this.getWeatherByCity("Seattle");
+    this.getWeather();
   }
 
   handleMenuOpen(event): void {
@@ -31,7 +33,6 @@ export class AppComponent {
   getWeatherByCity(city: string): void {
     const returnedCity = this.weatherService.getWeatherByCity(city);
     this.currentCity = returnedCity[0];
-    console.log(this.currentCity);
   }
 
   updateCity(event: string): void {

@@ -5,15 +5,28 @@ import { HttpModule } from "@angular/http";
 import { AppRoutingModule } from "./app-routing.module";
 import { AppComponent } from "./app.component";
 import { TestComponent } from "./test/test.component";
-import { ServiceWorkerModule } from '@angular/service-worker';
-import { environment } from '../environments/environment';
-import { NavbarComponent } from './components/navbar/navbar.component';
-import { MainWeatherComponent } from './components/main-weather/main-weather.component';
-import { NavMenuComponent } from './components/nav-menu/nav-menu.component';
+import { ServiceWorkerModule } from "@angular/service-worker";
+import { environment } from "../environments/environment";
+import { NavbarComponent } from "./components/navbar/navbar.component";
+import { MainWeatherComponent } from "./components/main-weather/main-weather.component";
+import { NavMenuComponent } from "./components/nav-menu/nav-menu.component";
 
 @NgModule({
-  declarations: [AppComponent, TestComponent, NavbarComponent, MainWeatherComponent, NavMenuComponent],
-  imports: [BrowserModule, AppRoutingModule, HttpModule, ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production })],
+  declarations: [
+    AppComponent,
+    TestComponent,
+    NavbarComponent,
+    MainWeatherComponent,
+    NavMenuComponent
+  ],
+  imports: [
+    BrowserModule,
+    AppRoutingModule,
+    HttpModule,
+    ServiceWorkerModule.register("ngsw-worker.js", {
+      enabled: environment.production
+    })
+  ],
   providers: [],
   bootstrap: [AppComponent]
 })

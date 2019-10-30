@@ -1,8 +1,12 @@
+require("dotenv").config();
 const express = require("express");
 const bodyParser = require("body-parser");
+const fetch = require("node-fetch");
 
 const app = express();
 app.use(bodyParser.json());
+
+const API_URL = "https://api.openweathermap.org/data/2.5/";
 
 // CREATE LINK TO ANGULAR BUILD DIRECTORY
 const distDir = __dirname + "/dist/";
@@ -23,5 +27,17 @@ function handleError(res, reason, message, code) {
 }
 
 app.get("/api/test", function(req, res) {
-  res.status(200).json("api hit");
+  console.log("hit test");
+});
+
+app.get("/api/weather/:city", function(req, res) {
+  console.log(req.params.city);
+  console.log("api hit?");
+  fetch(
+    `${API_URL}weather?q=${req.params.city},us&units=imperial&appid=${process.env.OPEN_WEATHER_API}`
+  )
+    .then(res => res.json()) // add check status in here for error handling
+    .then(json => {
+      res.status(200).send(json);
+    });
 });

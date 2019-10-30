@@ -1,5 +1,8 @@
 import { Injectable } from "@angular/core";
-// import Temperateres type and mock weather as fake api return
+import { Http, Response } from "@angular/http";
+import { Observable } from "rxjs";
+import { tap } from "rxjs/operators";
+// import Temperatures type and mock weather as fake api return
 import { Temperatures } from "../types/temperatures";
 import { MOCK_WEATHER } from "./mock-weather";
 
@@ -7,10 +10,17 @@ import { MOCK_WEATHER } from "./mock-weather";
   providedIn: "root"
 })
 export class WeatherService {
-  constructor() {}
+  constructor(private http: Http) {}
 
-  getWeather(): Temperatures[] {
-    return MOCK_WEATHER;
+  // getWeather(): Promise<void | string> {
+  getWeather() {
+    console.log("getting weather");
+    return this.http
+      .get("api/weather/seattle")
+      .toPromise()
+      .then(response => response.json())
+      .then(data => console.log(data))
+      .catch(this.handleError);
   }
 
   getWeatherByCity(inputCity: string): Temperatures[] {
@@ -19,5 +29,14 @@ export class WeatherService {
         return place;
       }
     });
+  }
+
+  private handleError(error: any) {
+    let errMsg = error.message
+      ? error.message
+      : error.status
+      ? `${error.status} - ${error.statusText}`
+      : "Server error";
+    console.log(errMsg); // log to console instead
   }
 }
