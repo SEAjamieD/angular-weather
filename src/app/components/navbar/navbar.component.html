@@ -18,7 +18,7 @@
     <svg viewBox="0 0 100 100" preserveAspectRatio="none">
       <polygon points="75,0 100,100 0,100" />
     </svg>
-    <label for="search">
+    <div id="searchInputContainer">
       <input
         name="search"
         #searchInput
@@ -28,6 +28,6 @@
       <button (click)="handleSearch(searchInput.value)" type="submit">
         Go
       </button>
-    </label>
+    </div>
   </div>
 </div>

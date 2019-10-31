@@ -54,16 +54,20 @@
       }
     }
 
-    label {
+    // label {
+    //   display: flex;
+    //   flex-direction: row;
+    //   width: 100%;
+    // }
+    #searchInputContainer {
       display: flex;
       flex-direction: row;
-      width: 100%;
     }
     input {
       height: 100%;
       padding: 2em;
       font-size: 16px;
-      flex-grow: 1.7;
+      flex-grow: 1;
       color: $electric-blue;
       border: none;
       border-radius: 0;
@@ -74,7 +78,6 @@
       background: $electric-blue-light;
       color: $electric-blue;
       border: none;
-      padding: 0;
       font-size: 24px;
     }
   }
