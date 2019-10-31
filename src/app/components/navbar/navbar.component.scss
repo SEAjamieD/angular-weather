@@ -54,18 +54,13 @@
       }
     }
 
-    // label {
-    //   display: flex;
-    //   flex-direction: row;
-    //   width: 100%;
-    // }
     #searchInputContainer {
       display: flex;
       flex-direction: row;
     }
+
     input {
-      height: 100%;
-      padding: 2em;
+      padding: 1em;
       font-size: 16px;
       flex-grow: 1;
       color: $electric-blue;
@@ -73,12 +68,17 @@
       border-radius: 0;
     }
 
+    input::-webkit-input-placeholder {
+      color: $electric-blue;
+      font-style: italic;
+    }
+
     button {
-      width: 25%;
       background: $electric-blue-light;
       color: $electric-blue;
       border: none;
       font-size: 24px;
+      padding: 0 1.3em;
     }
   }
 
