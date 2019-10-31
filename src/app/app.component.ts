@@ -1,7 +1,5 @@
 import { Component } from "@angular/core";
 import { WeatherService } from "./services/weather.service";
-import { Temperatures } from "./types/temperatures";
-import { Observable } from "rxjs";
 
 @Component({
   selector: "app-root",
@@ -11,28 +9,27 @@ import { Observable } from "rxjs";
 export class AppComponent {
   title = "heroku-weather";
   menuOpen: boolean = false;
-  weather;
-  currentCity: Temperatures;
+  currentCity: object;
+  temp: number;
 
   constructor(private weatherService: WeatherService) {}
 
   ngOnInit() {
-    this.getWeatherByCity("Seattle");
-    this.getWeather();
+    this.getWeatherByCity("seattle");
   }
 
   handleMenuOpen(event): void {
     this.menuOpen = !this.menuOpen;
   }
 
-  getWeather(): void {
-    this.weather = this.weatherService.getWeather();
-  }
-
   //city input needed below
   getWeatherByCity(city: string): void {
-    const returnedCity = this.weatherService.getWeatherByCity(city);
-    this.currentCity = returnedCity[0];
+    this.weatherService.getWeatherByCity(city).then(data => {
+      console.log(data);
+      this.currentCity = data;
+
+      this.temp = Math.round(data.main.temp * 10) / 10; // round the temperature to 1 decimal points
+    });
   }
 
   updateCity(event: string): void {

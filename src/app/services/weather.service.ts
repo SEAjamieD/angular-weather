@@ -1,10 +1,7 @@
 import { Injectable } from "@angular/core";
-import { Http, Response } from "@angular/http";
-import { Observable } from "rxjs";
-import { tap } from "rxjs/operators";
+import { Http } from "@angular/http";
 // import Temperatures type and mock weather as fake api return
 import { Temperatures } from "../types/temperatures";
-import { MOCK_WEATHER } from "./mock-weather";
 
 @Injectable({
   providedIn: "root"
@@ -12,25 +9,23 @@ import { MOCK_WEATHER } from "./mock-weather";
 export class WeatherService {
   constructor(private http: Http) {}
 
-  // getWeather(): Promise<void | string> {
-  getWeather() {
-    console.log("getting weather");
+  getWeather(): Promise<void | string> {
     return this.http
-      .get("api/weather/seattle")
+      .get("api/weather")
       .toPromise()
-      .then(response => response.json())
-      .then(data => console.log(data))
+      .then(response => response.json() as string)
       .catch(this.handleError);
   }
 
-  getWeatherByCity(inputCity: string): Temperatures[] {
-    return MOCK_WEATHER.filter(place => {
-      if (place.city === inputCity) {
-        return place;
-      }
-    });
+  getWeatherByCity(inputCity: string): Promise<void | sting> {
+    return this.http
+      .get(`api/weather/${inputCity}`)
+      .toPromise()
+      .then(response => response.json() as string)
+      .catch(this.handleError);
   }
 
+  // Error Handling
   private handleError(error: any) {
     let errMsg = error.message
       ? error.message
@@ -38,5 +33,6 @@ export class WeatherService {
       ? `${error.status} - ${error.statusText}`
       : "Server error";
     console.log(errMsg); // log to console instead
+    return errMsg;
   }
 }

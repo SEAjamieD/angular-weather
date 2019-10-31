@@ -31,8 +31,7 @@ app.get("/api/test", function(req, res) {
 });
 
 app.get("/api/weather/:city", function(req, res) {
-  console.log(req.params.city);
-  console.log("api hit?");
+  console.log(`server getting weather for ${req.params.city}`);
   fetch(
     `${API_URL}weather?q=${req.params.city},us&units=imperial&appid=${process.env.OPEN_WEATHER_API}`
   )
