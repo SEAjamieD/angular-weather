@@ -10,11 +10,14 @@ export class WeatherService {
   constructor(private http: Http) {}
 
   getWeatherByCity(inputCity: string): Promise<void | string> {
-    return this.http
-      .get(`api/weather/${inputCity}`)
-      .toPromise()
-      .then(response => response.json() as string)
-      .catch(this.handleError);
+    return (
+      this.http
+        .get(`api/weather/${inputCity}`)
+        .toPromise()
+        .then(response => response.json())
+        // .then(response => response.json() as string)
+        .catch(this.handleError)
+    );
   }
 
   // Error Handling
