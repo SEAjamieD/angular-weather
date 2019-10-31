@@ -9,7 +9,7 @@ import { Temperatures } from "../types/temperatures";
 export class WeatherService {
   constructor(private http: Http) {}
 
-  getWeatherByCity(inputCity: string): Promise<void | string> {
+  getWeatherByCity(inputCity: string): Promise<any> {
     return (
       this.http
         .get(`api/weather/${inputCity}`)
