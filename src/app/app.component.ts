@@ -9,7 +9,7 @@ import { WeatherService } from "./services/weather.service";
 export class AppComponent {
   title = "heroku-weather";
   menuOpen: boolean = false;
-  currentCity: object;
+  currentCity;
   temp: number;
 
   constructor(private weatherService: WeatherService) {}
