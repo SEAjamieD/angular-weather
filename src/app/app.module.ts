@@ -10,6 +10,7 @@ import { environment } from "../environments/environment";
 import { NavbarComponent } from "./components/navbar/navbar.component";
 import { MainWeatherComponent } from "./components/main-weather/main-weather.component";
 import { NavMenuComponent } from "./components/nav-menu/nav-menu.component";
+import { InputDirective } from './directives/input.directive';
 
 @NgModule({
   declarations: [
@@ -17,7 +18,8 @@ import { NavMenuComponent } from "./components/nav-menu/nav-menu.component";
     TestComponent,
     NavbarComponent,
     MainWeatherComponent,
-    NavMenuComponent
+    NavMenuComponent,
+    InputDirective
   ],
   imports: [
     BrowserModule,
