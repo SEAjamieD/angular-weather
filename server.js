@@ -6,7 +6,7 @@ const fetch = require("node-fetch");
 const app = express();
 app.use(bodyParser.json());
 
-const API_URL = "https://api.openweathermap.org/data/2.5/";
+const API_URL = "https://api.openweathermap.org/data/2.5";
 
 // CREATE LINK TO ANGULAR BUILD DIRECTORY
 const distDir = __dirname + "/dist/";
@@ -33,7 +33,18 @@ app.get("/api/test", function(req, res) {
 app.get("/api/weather/:city", function(req, res) {
   console.log(`server getting weather for ${req.params.city}`);
   fetch(
-    `${API_URL}weather?q=${req.params.city},us&units=imperial&appid=${process.env.OPEN_WEATHER_API}`
+    `${API_URL}/weather?q=${req.params.city},us&units=imperial&appid=${process.env.OPEN_WEATHER_API}`
+  )
+    .then(res => res.json()) // add check status in here for error handling
+    .then(json => {
+      res.status(200).send(json);
+    });
+});
+
+app.get("/api/forecast/:city", function(req, res) {
+  console.log(`server getting weather for ${req.params.city}`);
+  fetch(
+    `${API_URL}/forecast?q=${req.params.city},us&units=imperial&appid=${process.env.OPEN_WEATHER_API}`
   )
     .then(res => res.json()) // add check status in here for error handling
     .then(json => {

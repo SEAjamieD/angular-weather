@@ -30,4 +30,28 @@
 .forecast-container {
   flex-grow: 1;
   background: white;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-left: 2em;
+  padding-right: 2em;
+
+  ul {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border: 1px solid red;
+    li {
+      width: 15%;
+      height: 80px;
+      border-radius: 30px;
+      border: 1px solid blue;
+      &.active {
+        height: 100px;
+        width: 20%;
+      }
+    }
+  }
 }
