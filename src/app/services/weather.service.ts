@@ -1,5 +1,6 @@
 import { Injectable } from "@angular/core";
 import { Http } from "@angular/http";
+import { Observable, forkJoin } from "rxjs";
 // import Temperatures type and mock weather as fake api return
 import { Temperatures } from "../types/temperatures";
 
@@ -18,6 +19,13 @@ export class WeatherService {
         // .then(response => response.json() as string)
         .catch(this.handleError)
     );
+  }
+
+  public getWeatherForecastAndTempByCity(inputCity: string): Observable<any[]> {
+    let weatherResponse = this.http.get(`api/weather/${inputCity}`);
+    let forecast = this.http.get(`api/forecast/${inputCity}`);
+
+    return forkJoin([weatherResponse, forecast]);
   }
 
   // Error Handling

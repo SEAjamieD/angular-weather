@@ -4,11 +4,9 @@
   </div>
   <div class="forecast-container">
     <ul>
-      <li></li>
-      <li></li>
-      <li class="active"></li>
-      <li></li>
-      <li></li>
+      <li *ngFor="let temp of forecastTemps">
+        <span>{{ temp }}</span>
+      </li>
     </ul>
   </div>
 </div>

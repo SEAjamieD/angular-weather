@@ -9,30 +9,38 @@ import { WeatherService } from "./services/weather.service";
 export class AppComponent {
   title = "heroku-weather";
   menuOpen: boolean = false;
-  currentCity;
+  currentCity: any;
+  currentForecast: any;
+  forecast: any;
   temp: number;
 
   constructor(private weatherService: WeatherService) {}
 
   ngOnInit() {
-    this.getWeatherByCity("seattle");
+    this.getWeatherForecastAndTempByCity("seattle");
   }
 
   handleMenuOpen(event): void {
     this.menuOpen = !this.menuOpen;
   }
 
-  //city input needed below
-  getWeatherByCity(city: string): void {
-    this.weatherService.getWeatherByCity(city).then(data => {
-      console.log(data);
-      this.currentCity = data;
+  getWeatherForecastAndTempByCity(city: string): void {
+    this.weatherService
+      .getWeatherForecastAndTempByCity(city)
+      .subscribe(responseList => {
+        this.currentCity = responseList[0].json();
+        this.currentForecast = responseList[1].json();
 
-      this.temp = Math.round(data.main.temp); // round the temperature
-    });
+        this.temp = Math.round(this.currentCity.main.temp); // Round the current temp
+        this.forecast = this.currentForecast.list
+          .slice(3)
+          .filter((_, i) => i % 8 === 0);
+        console.log(this.currentCity);
+        console.log(this.forecast);
+      });
   }
 
   updateCity(event: string): void {
-    this.getWeatherByCity(event);
+    this.getWeatherForecastAndTempByCity(event);
   }
 }

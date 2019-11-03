@@ -42,15 +42,25 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    border: 1px solid red;
+
     li {
       width: 15%;
       height: 80px;
       border-radius: 30px;
-      border: 1px solid blue;
+      border: 1px solid lightgrey;
+
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
       &.active {
         height: 100px;
         width: 20%;
+      }
+
+      span {
+        font-size: 24px;
+        font-weight: bold;
       }
     }
   }

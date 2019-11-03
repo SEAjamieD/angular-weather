@@ -7,7 +7,10 @@
         (newCity)="updateCity($event)"
         [currentCity]="currentCity"
       ></app-navbar>
-      <app-main-weather [temperature]="temp"></app-main-weather>
+      <app-main-weather
+        [temperature]="temp"
+        [forecast]="forecast"
+      ></app-main-weather>
     </div>
   </div>
 </div>
