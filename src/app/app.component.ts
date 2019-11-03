@@ -28,7 +28,7 @@ export class AppComponent {
       console.log(data);
       this.currentCity = data;
 
-      this.temp = Math.round(data.main.temp * 10) / 10; // round the temperature to 1 decimal points
+      this.temp = Math.round(data.main.temp); // round the temperature
     });
   }
 
